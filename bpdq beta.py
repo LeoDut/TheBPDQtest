@@ -2,7 +2,6 @@
 import pygame,random,os
 from pygame.locals import *
 
-#Salut, modification du fichier de dom
 
 reference_entrainement = ['n']
 distracteurs_entrainement = ['l','m','o']
