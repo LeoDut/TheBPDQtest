@@ -135,7 +135,6 @@ def barrage(reference_letter, distractive_letters, essais):
         else:
             print>>data, suj+';'+init+';'+sexe+';'+ age+';'+ lateralisation+';'+'partie2'+';'+str(reference_letter)+';'+ str(distractive_letters)+';'+affiche[16]+';'+ response+';'+ str(TR)+';'+ str(j+1)+';'+str(ecart)
         
-    pygame.event.set_allowed(pygame.KEYDOWN)
 
 
 def text_input(question,(x,y)):#fait comme raw_input mais en blittant avec pygame, (x,y) controle les coordonnées d'affichage. Nécessite la bibliothèque _keys
