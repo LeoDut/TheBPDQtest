@@ -2,7 +2,7 @@
 import pygame,random,os
 from pygame.locals import *
 
-#Salut, modification du fichier de dom
+
 
 reference_entrainement = ['n']
 distracteurs_entrainement = ['l','m','o']
@@ -13,7 +13,7 @@ distracteurs_partie2 = ['p','d','q']
 nombre_essais_entrainement = 10
 nombre_essais_parties = 11
 
-consignes = "\nCONSIGNES\n\nBonjour connard, bienvenue à mon expérience de merde. Je te propose de commencer à te concentrer sérieusement, parce que si tu ne fais pas bien cette tâche, \
+consignes = "\nCONSIGNES\n\nBonjour connard, Je m'appelle Leo et je suis un gros FDP. Je te propose de commencer à te concentrer sérieusement, parce que si tu ne fais pas bien cette tâche, \
 autant te jeter du haut de la tour Eiffel pour débarasser le monde de ton inutile carcasse.\n\n\nAppuyez sur espace pour commencer."
 
 #bibliothèque nécessaire à la fonction text_input : mappe les codes ascii aux lettres correspondantes.
