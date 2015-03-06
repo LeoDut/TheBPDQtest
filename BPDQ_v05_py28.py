@@ -27,25 +27,6 @@ _keys = {97: 'q', 98: 'b', 99: 'c', 100: 'd', 101 : 'e', \
          K_KP0: '0',K_KP1: '1',K_KP2: '2',K_KP3: '3',K_KP4: '4',\
          K_KP5: '5',K_KP6: '6',K_KP7: '7',K_KP8: '8',K_KP9: '9'}
 
-def ecrire (phrase, police, taille, (x,y), color_font,color_background=None):      #attention pas de flip dans cette fonction
-    police = pygame.font.SysFont(police, taille)
-    surface=police.render(phrase, 1, color_font)
-    rectangle = surface.get_rect()
-    rectangle.center = (x,y)
-    if color_background==None:
-        pass
-    else:
-        screen.fill(color_background)
-    screen.blit(surface, rectangle)
-
-def lignes_rouges():
-    police = pygame.font.SysFont("lucida console", W/14)
-    d=police.render('d', 1, (0, 0, 0))
-    large=d.get_width()
-    haute=d.get_height()
-    pygame.draw.line(screen, (255,0,0), [W/2,H/2-haute], [W/2,H/2+haute], 2)
-    pygame.draw.line(screen, (255,0,0), [W/2-large,H/2-haute], [W/2-large,H/2+haute], 2)
-
 def barrage(reference_letter, distractive_letters, essais):
     #récupère la taille d'une lettre (lucida console est monospace)
     police = pygame.font.SysFont("lucida console", W/14)
@@ -137,7 +118,26 @@ def barrage(reference_letter, distractive_letters, essais):
         else:
             print>>data, suj+';'+init+';'+sexe+';'+ age+';'+ lateralisation+';'+'partie2'+';'+str(reference_letter)+';'+ str(distractive_letters)+';'+affiche[16]+';'+ response+';'+ str(TR)+';'+ str(j+1)+';'+str(ecart)
         
+    pygame.event.set_allowed(pygame.KEYDOWN)
+        
+def ecrire (phrase, police, taille, (x,y), color_font,color_background=None):      #attention pas de flip dans cette fonction
+    police = pygame.font.SysFont(police, taille)
+    surface=police.render(phrase, 1, color_font)
+    rectangle = surface.get_rect()
+    rectangle.center = (x,y)
+    if color_background==None:
+        pass
+    else:
+        screen.fill(color_background)
+    screen.blit(surface, rectangle)
 
+def lignes_rouges():
+    police = pygame.font.SysFont("lucida console", W/14)
+    d=police.render('d', 1, (0, 0, 0))
+    large=d.get_width()
+    haute=d.get_height()
+    pygame.draw.line(screen, (255,0,0), [W/2,H/2-haute], [W/2,H/2+haute], 2)
+    pygame.draw.line(screen, (255,0,0), [W/2-large,H/2-haute], [W/2-large,H/2+haute], 2)
 
 def text_input(question,(x,y)):#fait comme raw_input mais en blittant avec pygame, (x,y) controle les coordonnées d'affichage. Nécessite la bibliothèque _keys
     output=''
@@ -235,11 +235,11 @@ try:
     W, H = screen.get_size()
     
     screen.fill((255, 255, 255))
-    suj = text_input('Sujet n° : ',(50,H/9))
-    init = text_input('Initiales : ',(50,H/9*2))
-    sexe = text_input('Genre : ',(50,H/9*3))
-    age = text_input('Âge : ',(50,H/9*4))
-    lateralisation = text_input('Latéralisation : ',(50,H/9*5))
+    suj = text_input('Sujet n° : ',(W/21,H/9))
+    init = text_input('Initiales : ',(W/21,H/9*2))
+    sexe = text_input('Genre : ',(W/21,H/9*3))
+    age = text_input('Âge : ',(W/21,H/9*4))
+    lateralisation = text_input('Latéralisation : ',(W/21,H/9*5))
 
     data = open('suj'+suj+init+'.csv','w')
     print>>data, 'Sujet'+';'+ 'Initiales'+';'+'Sexe'+';'+ 'Age'+';'+ 'Lateralisation'+';'+'Partie'+';'+'Référence'+';'+'Distracteurs'+';'+'Lettre'+';'+ 'Reponse'+';'+'TR'+';'+'rang'+';'+'ecart_dernier_b'
